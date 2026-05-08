@@ -116,3 +116,32 @@ sha256sum -c SHA256SUMS
 ```
 
 如果文件未被修改，应显示 `OK`。
+
+## 八、一键验收
+
+发布包根目录提供一键验收脚本：
+
+```bash
+cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0
+./run_all_checks.sh
+```
+
+脚本会自动执行：
+
+- 发布包完整性校验；
+- 外部工具存在性检查；
+- 关键交付物存在性检查；
+- SME1 AI 运算库重新构建；
+- AArch64 产物类型检查；
+- SME 指令反汇编检查；
+- SME1 AI 运算库逐函数 QEMU 验证；
+- SME1 AI 运算库 REF/SME QEMU benchmark；
+- llama.cpp CLI 和 `mini.gguf` 冒烟测试。
+
+脚本会在 `acceptance_reports/` 下生成中文 Markdown 验收报告和完整日志。
+
+如果现场只需要快速检查，可跳过 benchmark 和 llama.cpp 冒烟测试：
+
+```bash
+RUN_BENCH=0 RUN_LLAMA=0 ./run_all_checks.sh
+```

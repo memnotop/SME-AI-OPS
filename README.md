@@ -21,6 +21,13 @@
 
 ## 快速运行
 
+一键验收：
+
+```bash
+cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0
+./run_all_checks.sh
+```
+
 SME AI 运算库：
 
 ```bash
@@ -56,7 +63,7 @@ VERSION=sme PROMPT="Hello." N_PREDICT=16 ./scripts/run_target_cli_mini.sh
 ## 建议验收顺序
 
 1. 阅读 `MANIFEST.md` 确认交付物。
-2. 阅读 `QUICKSTART.md` 运行构建和验证命令。
+2. 运行 `./run_all_checks.sh` 生成中文验收报告。
 3. 查看 `sme_ai_library/include/sme_ai_ops.h` 了解公开 API。
 4. 查看 `llama.cpp/doc/SME_Q2K_OPTIMIZATION.md` 了解 llama.cpp 接入方式。
 5. 查看 `SHA256SUMS` 做完整性校验。

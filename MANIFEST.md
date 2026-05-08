@@ -11,6 +11,7 @@
 | `LICENSE.md` | 许可与第三方组件说明 |
 | `MANIFEST.md` | 本交付清单 |
 | `SHA256SUMS` | 文件 SHA256 校验值 |
+| `run_all_checks.sh` | 一键验收脚本，生成中文验收报告 |
 
 ## 二、SME1 AI 运算库
 
@@ -73,4 +74,11 @@ bash build.sh
 cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0/llama.cpp
 ./scripts/run_qemu_cli_help.sh
 ./scripts/run_qemu_mini_gguf.sh
+```
+
+也可以在发布包根目录直接运行完整验收：
+
+```bash
+cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0
+./run_all_checks.sh
 ```
