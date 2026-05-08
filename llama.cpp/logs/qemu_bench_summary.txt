@@ -1,0 +1,8 @@
+llama.cpp mini.gguf QEMU smoke test
+
+REF t/s: 0.95 ± 0.00
+SME t/s: 0.12 ± 0.00
+REF real: 2.08 s
+SME real: 9.33 s
+
+Note: QEMU is for startup/correctness smoke tests only. Final performance must be measured on the SME1 target CPU.

@@ -1,0 +1,5 @@
+SME-AI-OPS v1.0
+发布日期：2026-05-08
+发布类型：大学生创新训练项目终检软件交付包
+目标平台：AArch64 / ARMv9-A / SVE / SME1，当前微内核面向 512-bit SME vector length
+主要内容：SME1 AI 运算库、llama.cpp REF/SME 双版本运行环境、示例模型、运行脚本、测试日志和技术文档
