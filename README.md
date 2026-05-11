@@ -10,8 +10,9 @@
 - `MANIFEST.md`：交付物清单。
 - `QUICKSTART.md`：快速开始。
 - `RELEASE_NOTES.md`：发布说明。
+- `API_TEST_REPORT_MAPPING.md`：公开 API、测试用例和验收报告对应表。
 - `LICENSE.md`：许可与第三方组件说明。
-- `SHA256SUMS`：文件完整性校验值。
+- `SHA256SUMS`：固定发布文件完整性校验值，不包含可再生成的 `build/`、`logs/` 和 `acceptance_reports/`。
 
 ## 适用范围
 
@@ -64,6 +65,7 @@ VERSION=sme PROMPT="Hello." N_PREDICT=16 ./scripts/run_target_cli_mini.sh
 
 1. 阅读 `MANIFEST.md` 确认交付物。
 2. 运行 `./run_all_checks.sh` 生成中文验收报告。
-3. 查看 `sme_ai_library/include/sme_ai_ops.h` 了解公开 API。
-4. 查看 `llama.cpp/doc/SME_Q2K_OPTIMIZATION.md` 了解 llama.cpp 接入方式。
-5. 查看 `SHA256SUMS` 做完整性校验。
+3. 查看 `API_TEST_REPORT_MAPPING.md` 核对 API、测试用例和验收报告。
+4. 查看 `sme_ai_library/include/sme_ai_ops.h` 了解公开 API。
+5. 查看 `llama.cpp/doc/SME_Q2K_OPTIMIZATION.md` 了解 llama.cpp 接入方式。
+6. 查看 `SHA256SUMS` 做完整性校验。

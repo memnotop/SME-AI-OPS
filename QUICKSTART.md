@@ -115,7 +115,7 @@ cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0
 sha256sum -c SHA256SUMS
 ```
 
-如果文件未被修改，应显示 `OK`。
+如果固定发布文件未被修改，应显示 `OK`。`SHA256SUMS` 不校验可再生成的 `sme_ai_library/build/`、`llama.cpp/logs/` 和 `acceptance_reports/`，这些内容分别由构建步骤、运行脚本和验收报告重新生成。
 
 ## 八、一键验收
 
@@ -139,6 +139,12 @@ cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0
 - llama.cpp CLI 和 `mini.gguf` 冒烟测试。
 
 脚本会在 `acceptance_reports/` 下生成中文 Markdown 验收报告和完整日志。
+
+公开 API 与测试项的对应关系见：
+
+```text
+API_TEST_REPORT_MAPPING.md
+```
 
 如果现场只需要快速检查，可跳过 benchmark 和 llama.cpp 冒烟测试：
 

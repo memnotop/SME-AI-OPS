@@ -159,7 +159,7 @@ EOF
 append_report_header
 
 if [[ "$RUN_SHA256" == "1" ]]; then
-  run_step "发布包完整性校验" "$ROOT" "sha256sum -c SHA256SUMS" "构建前校验发布包内静态文件是否与 SHA256SUMS 一致。" || true
+  run_step "发布包完整性校验" "$ROOT" "sha256sum -c SHA256SUMS" "构建前校验固定发布文件是否与 SHA256SUMS 一致；可再生成的 build、logs 和 acceptance_reports 不纳入此校验。" || true
 else
   skip_step "发布包完整性校验" "RUN_SHA256=$RUN_SHA256，按配置跳过。"
 fi
@@ -169,8 +169,8 @@ run_step "外部工具存在性检查" "$ROOT" \
   "检查交叉工具链、QEMU 和 sysroot 是否存在。" || true
 
 run_step "关键交付物存在性检查" "$ROOT" \
-  "test -f VERSION && test -f README.md && test -f MANIFEST.md && test -f QUICKSTART.md && test -f RELEASE_NOTES.md && test -f LICENSE.md && test -f sme_ai_library/include/sme_ai_ops.h && test -f sme_ai_library/src/sme_ai_ops.c && test -f sme_ai_library/src/sme1_gemm_tile_16x16.S && test -f llama.cpp/bin/ref/llama-bench && test -f llama.cpp/bin/sme/llama-bench && test -f llama.cpp/models/mini.gguf" \
-  "检查发布说明、函数库源码、llama.cpp 双版本二进制和示例模型是否齐全。" || true
+  "test -f VERSION && test -f README.md && test -f MANIFEST.md && test -f QUICKSTART.md && test -f RELEASE_NOTES.md && test -f API_TEST_REPORT_MAPPING.md && test -f LICENSE.md && test -f sme_ai_library/include/sme_ai_ops.h && test -f sme_ai_library/src/sme_ai_ops.c && test -f sme_ai_library/src/sme1_gemm_tile_16x16.S && test -f llama.cpp/bin/ref/llama-bench && test -f llama.cpp/bin/sme/llama-bench && test -f llama.cpp/models/mini.gguf" \
+  "检查发布说明、API-测试-报告对应表、函数库源码、llama.cpp 双版本二进制和示例模型是否齐全。" || true
 
 if run_step "SME1 AI 运算库重新构建" "$ROOT/sme_ai_library" \
   "TOOLCHAIN_ROOT='$TOOLCHAIN_ROOT' CC='$GCC' AR='$AR' bash build.sh" \

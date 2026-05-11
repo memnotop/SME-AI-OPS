@@ -8,9 +8,10 @@
 | `README.md` | 发布包总说明 |
 | `QUICKSTART.md` | 快速开始与常用命令 |
 | `RELEASE_NOTES.md` | v1.0 发布说明 |
+| `API_TEST_REPORT_MAPPING.md` | 公开 API、测试用例和验收报告对应表 |
 | `LICENSE.md` | 许可与第三方组件说明 |
 | `MANIFEST.md` | 本交付清单 |
-| `SHA256SUMS` | 文件 SHA256 校验值 |
+| `SHA256SUMS` | 固定发布文件 SHA256 校验值，不包含可再生成的 `build/`、`logs/` 和 `acceptance_reports/` |
 | `run_all_checks.sh` | 一键验收脚本，生成中文验收报告 |
 
 ## 二、SME1 AI 运算库
@@ -29,6 +30,12 @@
 | `sme_ai_library/build/libsme_ai_ops.a` | 已构建的 AArch64 静态库 |
 | `sme_ai_library/build/bench_sme_full_timing` | 已构建的 benchmark 二进制 |
 | `sme_ai_library/build/verify_sme_ai_timing` | 已构建的逐函数验证二进制 |
+
+API、测试用例和验收报告的逐项对应关系见：
+
+```text
+API_TEST_REPORT_MAPPING.md
+```
 
 公开 API 覆盖范围包括：
 
