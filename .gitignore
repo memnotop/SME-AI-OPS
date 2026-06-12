@@ -1,6 +1,9 @@
 # 一键验收脚本生成的报告目录，不纳入源码仓库。
 acceptance_reports/
 
+# 示例程序的构建产物，可由 examples/build_demo_linear.sh 重新生成。
+examples/build/
+
 # 临时日志和编辑器缓存。
 *.tmp
 *.swp

@@ -8,7 +8,11 @@
 | `README.md` | 发布包总说明 |
 | `QUICKSTART.md` | 快速开始与常用命令 |
 | `RELEASE_NOTES.md` | v1.0 发布说明 |
+| `CHANGELOG.md` | 版本变更记录 |
+| `CONTRIBUTING.md` | 后续开发说明 |
 | `API_TEST_REPORT_MAPPING.md` | 公开 API、测试用例和验收报告对应表 |
+| `GOAL_TRACEABILITY.md` | 前期/中期目标与当前成果的对应表 |
+| `FINAL_EXPERIMENT_SUMMARY.md` | 最终实验结果摘要 |
 | `LICENSE.md` | 许可与第三方组件说明 |
 | `MANIFEST.md` | 本交付清单 |
 | `SHA256SUMS` | 固定发布文件 SHA256 校验值，不包含可再生成的 `build/`、`logs/` 和 `acceptance_reports/` |
@@ -68,7 +72,27 @@ API_TEST_REPORT_MAPPING.md
 | --- | --- |
 | `doc/SME1_INSTRUCTION_PRINCIPLES.md` | SME1 核心指令与本项目使用方式说明 |
 
-## 五、验收时建议展示的命令
+## 五、扩展说明文档
+
+| 路径 | 说明 |
+| --- | --- |
+| `docs/architecture.md` | 软件架构说明 |
+| `docs/build_and_run.md` | 构建与运行说明 |
+| `docs/api_reference.md` | API 参考摘要 |
+| `docs/test_methodology.md` | 测试方法说明 |
+| `docs/performance_summary.md` | 性能结果说明 |
+| `docs/limitations_and_future.md` | 局限与后续工作 |
+
+## 六、最小用户示例
+
+| 路径 | 说明 |
+| --- | --- |
+| `examples/README.md` | 示例说明 |
+| `examples/demo_linear.c` | 最小 Linear 调用示例 |
+| `examples/build_demo_linear.sh` | 示例构建脚本 |
+| `examples/run_qemu_demo_linear.sh` | 示例 QEMU 运行脚本 |
+
+## 七、验收时建议展示的命令
 
 ```bash
 cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0/sme_ai_library

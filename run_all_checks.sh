@@ -169,8 +169,8 @@ run_step "外部工具存在性检查" "$ROOT" \
   "检查交叉工具链、QEMU 和 sysroot 是否存在。" || true
 
 run_step "关键交付物存在性检查" "$ROOT" \
-  "test -f VERSION && test -f README.md && test -f MANIFEST.md && test -f QUICKSTART.md && test -f RELEASE_NOTES.md && test -f API_TEST_REPORT_MAPPING.md && test -f LICENSE.md && test -f sme_ai_library/include/sme_ai_ops.h && test -f sme_ai_library/src/sme_ai_ops.c && test -f sme_ai_library/src/sme1_gemm_tile_16x16.S && test -f llama.cpp/bin/ref/llama-bench && test -f llama.cpp/bin/sme/llama-bench && test -f llama.cpp/models/mini.gguf" \
-  "检查发布说明、API-测试-报告对应表、函数库源码、llama.cpp 双版本二进制和示例模型是否齐全。" || true
+  "test -f VERSION && test -f README.md && test -f MANIFEST.md && test -f QUICKSTART.md && test -f RELEASE_NOTES.md && test -f API_TEST_REPORT_MAPPING.md && test -f GOAL_TRACEABILITY.md && test -f FINAL_EXPERIMENT_SUMMARY.md && test -f LICENSE.md && test -f docs/architecture.md && test -f docs/build_and_run.md && test -f docs/api_reference.md && test -f docs/test_methodology.md && test -f docs/performance_summary.md && test -f docs/limitations_and_future.md && test -f examples/demo_linear.c && test -x examples/build_demo_linear.sh && test -x examples/run_qemu_demo_linear.sh && test -f sme_ai_library/include/sme_ai_ops.h && test -f sme_ai_library/src/sme_ai_ops.c && test -f sme_ai_library/src/sme1_gemm_tile_16x16.S && test -f llama.cpp/bin/ref/llama-bench && test -f llama.cpp/bin/sme/llama-bench && test -f llama.cpp/models/mini.gguf" \
+  "检查发布说明、目标追踪、最终实验总结、docs 文档、examples 示例、函数库源码、llama.cpp 双版本二进制和示例模型是否齐全。" || true
 
 if run_step "SME1 AI 运算库重新构建" "$ROOT/sme_ai_library" \
   "TOOLCHAIN_ROOT='$TOOLCHAIN_ROOT' CC='$GCC' AR='$AR' bash build.sh" \
@@ -204,11 +204,16 @@ if [[ "$BUILD_OK" == "1" ]]; then
   else
     skip_step "SME1 AI 运算库 REF/SME QEMU benchmark" "RUN_BENCH=$RUN_BENCH，按配置跳过。"
   fi
+
+  run_step "最小用户示例构建和 QEMU 运行" "$ROOT/examples" \
+    "TOOLCHAIN_ROOT='$TOOLCHAIN_ROOT' CC='$GCC' QEMU='$QEMU' ./build_demo_linear.sh && QEMU='$QEMU' ./run_qemu_demo_linear.sh" \
+    "构建并运行 examples/demo_linear.c，确认外部程序可以链接静态库并调用 SME packed Linear。" || true
 else
   skip_step "AArch64 产物类型检查" "构建失败，跳过依赖构建产物的检查。"
   skip_step "SME1 AI 运算库指令检查" "构建失败，跳过依赖构建产物的检查。"
   skip_step "SME1 AI 运算库逐函数 QEMU 验证" "构建失败，跳过依赖构建产物的检查。"
   skip_step "SME1 AI 运算库 REF/SME QEMU benchmark" "构建失败，跳过依赖构建产物的检查。"
+  skip_step "最小用户示例构建和 QEMU 运行" "构建失败，跳过依赖函数库的示例检查。"
 fi
 
 if [[ "$RUN_LLAMA" == "1" ]]; then

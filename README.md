@@ -7,10 +7,14 @@
 - `sme_ai_library/`：SME1 AI 运算库，包含头文件、源码、静态库、benchmark 和逐函数验证程序。
 - `llama.cpp/`：llama.cpp 的 REF/SME 两套 AArch64 可执行环境，包含 `llama-bench`、`llama-cli`、动态库、脚本和 `mini.gguf` 示例模型。
 - `doc/`：SME1 指令原理说明。
+- `docs/`：软件架构、构建运行、API 摘要、测试方法、性能说明和后续工作。
+- `examples/`：最小用户示例，演示如何链接静态库并调用 SME packed Linear。
 - `MANIFEST.md`：交付物清单。
 - `QUICKSTART.md`：快速开始。
 - `RELEASE_NOTES.md`：发布说明。
 - `API_TEST_REPORT_MAPPING.md`：公开 API、测试用例和验收报告对应表。
+- `GOAL_TRACEABILITY.md`：前期/中期目标与当前成果的对应表。
+- `FINAL_EXPERIMENT_SUMMARY.md`：最终实验结果摘要。
 - `LICENSE.md`：许可与第三方组件说明。
 - `SHA256SUMS`：固定发布文件完整性校验值，不包含可再生成的 `build/`、`logs/` 和 `acceptance_reports/`。
 
@@ -60,12 +64,3 @@ VERSION=sme PROMPT="Hello." N_PREDICT=16 ./scripts/run_target_cli_mini.sh
 - `sme_ai_library` 当前微内核要求 `cntw == 16`，即 512-bit SME vector length。
 - `llama.cpp` 的自研优化集中在 `Q2_K` 权重量化矩阵乘路径，不覆盖模型中的全部量化格式。
 - 本发布包不宣称已经完成 GCC/LLVM 编译器后端改造；编译器方向以工具链验证、构建支持和原理说明为主。
-
-## 建议验收顺序
-
-1. 阅读 `MANIFEST.md` 确认交付物。
-2. 运行 `./run_all_checks.sh` 生成中文验收报告。
-3. 查看 `API_TEST_REPORT_MAPPING.md` 核对 API、测试用例和验收报告。
-4. 查看 `sme_ai_library/include/sme_ai_ops.h` 了解公开 API。
-5. 查看 `llama.cpp/doc/SME_Q2K_OPTIMIZATION.md` 了解 llama.cpp 接入方式。
-6. 查看 `SHA256SUMS` 做完整性校验。

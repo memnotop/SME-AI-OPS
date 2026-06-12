@@ -108,7 +108,21 @@ cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0/llama.cpp
 VERSION=sme PROMPT="Hello." N_PREDICT=16 ./scripts/run_target_cli_mini.sh
 ```
 
-## 七、完整性校验
+## 七、最小用户示例
+
+```bash
+cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0/examples
+./build_demo_linear.sh
+./run_qemu_demo_linear.sh
+```
+
+预期输出包含：
+
+```text
+DEMO_LINEAR PASS
+```
+
+## 八、完整性校验
 
 ```bash
 cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0
@@ -117,7 +131,7 @@ sha256sum -c SHA256SUMS
 
 如果固定发布文件未被修改，应显示 `OK`。`SHA256SUMS` 不校验可再生成的 `sme_ai_library/build/`、`llama.cpp/logs/` 和 `acceptance_reports/`，这些内容分别由构建步骤、运行脚本和验收报告重新生成。
 
-## 八、一键验收
+## 九、一键验收
 
 发布包根目录提供一键验收脚本：
 
@@ -136,6 +150,7 @@ cd /home/liumingjian/dachuang/SME-AI-OPS-v1.0
 - SME 指令反汇编检查；
 - SME1 AI 运算库逐函数 QEMU 验证；
 - SME1 AI 运算库 REF/SME QEMU benchmark；
+- 最小用户示例构建和 QEMU 运行；
 - llama.cpp CLI 和 `mini.gguf` 冒烟测试。
 
 脚本会在 `acceptance_reports/` 下生成中文 Markdown 验收报告和完整日志。

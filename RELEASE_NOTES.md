@@ -50,6 +50,16 @@ SME 版本特点：
 - 使用直接 `Q2_K x Q8_K` SME kernel，避免早期 `Q2_K -> float -> fp16` 桥接路径。
 - 内层 dot 使用 SME1 `smopa`。
 
+### 4. 结题验收辅助材料
+
+本版本补充以下中文验收材料：
+
+- `GOAL_TRACEABILITY.md`：前期/中期目标与当前成果、证据文件、完成度之间的对应表。
+- `FINAL_EXPERIMENT_SUMMARY.md`：最终实验口径和一键验收结果摘要。
+- `API_TEST_REPORT_MAPPING.md`：公开 API、测试用例和验收报告对应表。
+- `docs/`：软件架构、构建运行、API 摘要、测试方法、性能说明、局限与后续工作。
+- `examples/`：最小用户示例，演示外部程序如何链接 `libsme_ai_ops.a` 并调用 SME packed Linear。
+
 ## 三、测试情况
 
 发布前已在当前工作环境中完成以下验证：
@@ -58,6 +68,8 @@ SME 版本特点：
 - `sme_ai_library/run_qemu_verify_timing.sh` 可逐项验证公开函数，输出状态为 `OK`。
 - `sme_ai_library/run_qemu_full_bench.sh` 可输出 REF/SME 对比表。
 - `llama.cpp/scripts/run_qemu_mini_gguf.sh` 可启动 REF/SME 两套 `llama-bench` 并生成日志。
+- `examples/build_demo_linear.sh` 和 `examples/run_qemu_demo_linear.sh` 可构建并运行最小用户示例。
+- `run_all_checks.sh` 可生成包含 12 个步骤的中文验收报告。
 
 ## 四、已知限制
 
